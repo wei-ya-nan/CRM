@@ -247,9 +247,9 @@
                     return false;
                 }
                 var id = "";
-                for (var i = 0; i < deleteCheckBox.size(); i++) {
-                    id += "id=" + deleteCheckBox.val() + "&";
-                }
+                $.each(deleteCheckBox, function () {
+                    id = id + "ids=" + this.value + "&";
+                });
                 id = id.substr(0, id.length - 1);
                 layer.confirm("是否删除？", {btn: ["确定", "取消"]}, function (index) {
                     $.ajax({

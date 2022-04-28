@@ -181,4 +181,13 @@
     left join tbl_user u2 on tr.edit_by=u2.id
     where tr.tran_id=#{tranId}
   </select>
+    <select id="getAll" resultMap="BaseResultMap">
+
+  select tr.id,tr.note_content,u1.name as create_by,tr.create_time,u2.name as edit_by,tr.edit_time,tr.edit_flag,t.name as tran_id
+ from tbl_tran_remark tr
+ left join tbl_user u1 on tr.create_by = u1.id
+ left join tbl_user u2 on tr.edit_by=u2.id
+ left join tbl_tran t on tr.tran_id = t.id
+
+    </select>
 </mapper>

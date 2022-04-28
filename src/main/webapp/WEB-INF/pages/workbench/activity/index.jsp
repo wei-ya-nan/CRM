@@ -329,6 +329,7 @@
                 var checkboxlist = $("tBody [type='checkbox']:checked");
                 if (checkboxlist.size() == 0) {
                     layer.msg("请选在要导出的数据O_O");
+                    return false;
                 }
                 // var list = new Array();
 
@@ -375,7 +376,7 @@
                         PageSize: PageSize
                     },
                     success: function (response) {
-                        console.log(response.data);
+
                         window.lastPage = response.data.lastPage;
                         if (response.result == "SUCCESS") {
                             //显示总条数

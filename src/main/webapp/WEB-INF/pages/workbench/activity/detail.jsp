@@ -156,8 +156,7 @@
                 var id = $(this).attr("remarkId");
                 // layer.msg(id)/*;*/
 
-
-            })
+            });
 
             $("#updateRemarkBtn").click(function () {
                 // 收集参数

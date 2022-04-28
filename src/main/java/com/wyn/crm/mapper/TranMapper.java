@@ -1,11 +1,12 @@
 package com.wyn.crm.mapper;
 
 
-
 import com.wyn.crm.entity.FunnelVO;
 import com.wyn.crm.entity.Tran;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TranMapper {
     /**
@@ -75,4 +76,14 @@ public interface TranMapper {
      * @return
      */
     List<FunnelVO> selectCountOfTranGroupByStage();
+
+    List<Tran> getAll();
+
+    List<Tran> getPage(Map<String, Object> map);
+
+    Tran getTranById(@Param("id") String id);
+
+    int deleteTran(@Param("id") List<String> id);
+
+    List<FunnelVO> queryGroupByStage();
 }

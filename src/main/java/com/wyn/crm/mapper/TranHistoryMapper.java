@@ -27,4 +27,6 @@ public interface TranHistoryMapper {
     int updateByPrimaryKeySelective(TranHistory record);
 
     int updateByPrimaryKey(TranHistory record);
+
+    List<TranHistory> getAll();
 }

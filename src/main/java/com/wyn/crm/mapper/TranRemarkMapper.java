@@ -68,4 +68,6 @@ public interface TranRemarkMapper {
      * @return
      */
     List<TranRemark> selectTranRemarkForDetailByTranId(String tranId);
+
+    List<TranRemark> getAll();
 }

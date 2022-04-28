@@ -93,7 +93,7 @@ public class ClueController {
     @ResponseBody
     @RequestMapping("/clue/more/delete.json")
     public ResultEntity<String> deleteClue(@RequestParam("id") List<String> id){
-        System.out.println(id.toString());
+
         clueService.deleteClueInIdList(id);
         return ResultEntity.successWithData();
     }
