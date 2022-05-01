@@ -23,8 +23,8 @@ public class ClueActivityRelationServiceImpl implements ClueActivityRelationServ
 
     public int saveRelation(List<ClueActivityRelation> list) {
 
-        relationMapper.saveRelationByTwoId(list);
-        return 0;
+        int i = relationMapper.saveRelationByTwoId(list);
+        return i;
     }
 
     public int deleteRelation(ClueActivityRelation relation) {

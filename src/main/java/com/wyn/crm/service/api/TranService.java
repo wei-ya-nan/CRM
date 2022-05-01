@@ -1,9 +1,7 @@
 package com.wyn.crm.service.api;
 
 import com.github.pagehelper.PageInfo;
-import com.wyn.crm.entity.FunnelVO;
-import com.wyn.crm.entity.Tran;
-import com.wyn.crm.entity.User;
+import com.wyn.crm.entity.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,4 +29,8 @@ public interface TranService {
     int deleteTran(List<String> id);
 
     List<FunnelVO> queryCountOfTranGroupByStage();
+
+    List<Tran> getTranByCustomerId(String id);
+
+    List<Tran> getTranByContactsId(String id);
 }

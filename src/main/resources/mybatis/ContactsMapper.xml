@@ -250,7 +250,19 @@
       edit_time, description, contact_summary,
       next_contact_time, address from tbl_contacts where fullname like concat('%',#{fullname},'%')
     </select>
-    <update id="updateByExampleSelective" parameterType="map" >
+    <select id="getContactsByConId" resultType="com.wyn.crm.entity.Contacts">
+        select <include refid="Base_Column_List"/>
+        from tbl_contacts where customer_id=#{id}
+    </select>
+  <select id="getContactsByPrmarKey" resultMap="BaseResultMap">
+        	select c.id,c.owner,c.source,ct.name as customer_id ,c.fullname,c.appellation,c.email,c.mphone,c.job,u1.name as create_by,c.create_time,u2.name as edit_by,c.edit_time,c.description,c.contact_summary,c.next_contact_time,c.address from tbl_contacts c
+	left join tbl_customer ct on c.customer_id=ct.id
+	left join tbl_user u1 on u1.id = c.create_by
+	left join tbl_user u2 on u2.id = c.edit_by
+	where c.id = #{id}
+
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
     update tbl_contacts
     <set >
       <if test="record.id != null" >

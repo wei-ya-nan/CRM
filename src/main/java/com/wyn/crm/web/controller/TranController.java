@@ -65,9 +65,9 @@ public class TranController {
     }
 
     @RequestMapping("/transaction/save.html")
-    public String saveTran(Model model) {
+    public String saveTran(Model model,String customerId) {
         List<User> users = userService.getAllUsers();
-
+        System.out.println(customerId);
         List<DicValue> stageList = dicValueService.queryDicValueByTypeCode("stage");
         List<DicValue> transactionTypeList = dicValueService.queryDicValueByTypeCode("transactionType");
         List<DicValue> sourceList = dicValueService.queryDicValueByTypeCode("source");
@@ -75,6 +75,7 @@ public class TranController {
         model.addAttribute("transactionTypeList", transactionTypeList);
         model.addAttribute("sourceList", sourceList);
         model.addAttribute("users", users);
+        model.addAttribute("customerId",customerId);
         return "workbench/transaction/save";
     }
 
@@ -101,7 +102,7 @@ public class TranController {
     @ResponseBody
     @RequestMapping("/transaction/queryCustomer/auto.json")
     public ResultEntity<List<String>> queryCustomerAutoName(String customerName) {
-        System.out.println(customerName);
+//        System.out.println(customerName);
         // 调用service方法通过模糊查询返回客户customer 的名字集合
         List<String> list = customerService.queryNameByLikeForAuto(customerName);
         return ResultEntity.successWithData(list);

@@ -214,7 +214,37 @@
     <select id="queryNameByLikeForAuto" resultType="java.lang.String">
       select name from tbl_customer where name like concat('%',#{customerName},'%')
     </select>
-    <update id="updateByExampleSelective" parameterType="map" >
+    <select id="queryPage" resultMap="BaseResultMap">
+      select id, owner, name, website,
+      phone, create_by, create_time,
+      edit_by, edit_time, contact_summary,
+      next_contact_time, description, address
+      from tbl_customer
+      <where>
+        <if test="name!=null and name!=''">
+          and name like concat('%',#{name},'%')
+        </if>
+        <if test="owner!=null and owner!=''">
+          and owner like concat('%',#{owner},'%')
+        </if>
+        <if test="phone!=null and phone!=''">
+          and phone like concat('%',#{phone},'%')
+        </if>
+        <if test="website!=null and website!=''">
+          and website like concat('%',#{website},'%')
+        </if>
+      </where>
+    </select>
+  <select id="getConditionOne" resultMap="BaseResultMap">
+select c.id,c.name,c.owner,c.website,c.phone,u.name as create_by ,
+c.create_time, u1.name as edit_by,c.edit_time,
+c.contact_summary,c.next_contact_time,c.description,c.address
+from tbl_customer c
+ left join tbl_user u on c.create_by = u.id
+ left join tbl_user u1 on c.edit_by = u1.id
+ where c.id=#{id}
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
     update tbl_customer
     <set >
       <if test="record.id != null" >
@@ -283,40 +313,40 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.wyn.crm.entity.Customer" >
     update tbl_customer
     <set >
-      <if test="owner != null" >
+      <if test="owner != null and owner!=''" >
         owner = #{owner,jdbcType=CHAR},
       </if>
-      <if test="name != null" >
+      <if test="name != null and name!=''" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="website != null" >
+      <if test="website != null and website !=''" >
         website = #{website,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null and phone!=''" >
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null and createBy!=''" >
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null and createTime!=''" >
         create_time = #{createTime,jdbcType=CHAR},
       </if>
-      <if test="editBy != null" >
+      <if test="editBy != null and editBy!=''" >
         edit_by = #{editBy,jdbcType=VARCHAR},
       </if>
-      <if test="editTime != null" >
+      <if test="editTime != null and editTime!=''" >
         edit_time = #{editTime,jdbcType=CHAR},
       </if>
-      <if test="contactSummary != null" >
+      <if test="contactSummary != null and contactSummary!=''" >
         contact_summary = #{contactSummary,jdbcType=VARCHAR},
       </if>
-      <if test="nextContactTime != null" >
+      <if test="nextContactTime != null and nextContactTime!=''" >
         next_contact_time = #{nextContactTime,jdbcType=CHAR},
       </if>
-      <if test="description != null" >
+      <if test="description != null and description!=''" >
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
+      <if test="address != null and address!=''" >
         address = #{address,jdbcType=VARCHAR},
       </if>
     </set>

@@ -223,7 +223,6 @@
             });
 
             //给所有市场活动的单选按钮添加单击事件
-
             $("#tBody").on("click","input[type=checkbox]",function () {
                     // /*var checkBox = $("#checkboxAllRelation input[type=checkbox]");
                     // var c*/heckBoxChecked = $("#checkboxAllRelation input[type=checkbox]:checked");

@@ -256,4 +256,6 @@ public class CustomerRemark {
     public void setCustomerId(String customerId) {
         this.customerId = customerId == null ? null : customerId.trim();
     }
+
+
 }

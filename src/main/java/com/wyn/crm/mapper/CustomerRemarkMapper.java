@@ -61,4 +61,8 @@ public interface CustomerRemarkMapper {
      * @return
      */
     int insertCustomerRemarkByList(List<CustomerRemark> list);
+
+    List<CustomerRemark> getCustomerRemark(String id);
+
+
 }

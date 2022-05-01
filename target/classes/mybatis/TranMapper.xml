@@ -380,4 +380,10 @@
     join tbl_dic_value dv on t.stage=dv.value
     group by t.stage
     </select>
+    <select id="getTranByConstomerId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from tbl_tran where customer_id=#{id}
+    </select>
+    <select id="getTranByContactsId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from tbl_tran where contacts_id=#{id}
+    </select>
 </mapper>

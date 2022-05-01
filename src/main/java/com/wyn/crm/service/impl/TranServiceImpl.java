@@ -97,4 +97,14 @@ public class TranServiceImpl implements TranService {
         List<FunnelVO> list = tranMapper.queryGroupByStage();
         return list;
     }
+
+    public List<Tran> getTranByCustomerId(String id) {
+        List<Tran> tranList = tranMapper.getTranByConstomerId(id);
+        return tranList;
+    }
+
+    public List<Tran> getTranByContactsId(String id) {
+        List<Tran> list = tranMapper.getTranByContactsId(id);
+        return list;
+    }
 }

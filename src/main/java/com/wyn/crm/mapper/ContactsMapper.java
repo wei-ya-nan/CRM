@@ -29,5 +29,10 @@ public interface ContactsMapper {
     int updateByPrimaryKey(Contacts record);
 
     List<Contacts> queryContactsForLikeFullname(@Param("fullname") String fullname);
-            ;
+
+    List<Contacts> getContactsByConId(String id);
+
+    Contacts getContactsByPrmarKey(String id);
+
+    ;
 }

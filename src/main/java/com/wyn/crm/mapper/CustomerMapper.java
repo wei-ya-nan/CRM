@@ -29,4 +29,8 @@ public interface CustomerMapper {
     int updateByPrimaryKey(Customer record);
 
     List<String> queryNameByLikeForAuto(String customerName);
+
+    List<Customer> queryPage(@Param("name") String name, @Param("owner") String owner, @Param("phone") String phone, @Param("website") String website);
+
+    Customer getConditionOne(String id);
 }

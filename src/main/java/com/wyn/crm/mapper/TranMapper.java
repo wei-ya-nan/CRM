@@ -1,6 +1,7 @@
 package com.wyn.crm.mapper;
 
 
+import com.wyn.crm.entity.ContactsRemark;
 import com.wyn.crm.entity.FunnelVO;
 import com.wyn.crm.entity.Tran;
 import org.apache.ibatis.annotations.Param;
@@ -86,4 +87,8 @@ public interface TranMapper {
     int deleteTran(@Param("id") List<String> id);
 
     List<FunnelVO> queryGroupByStage();
+
+    List<Tran> getTranByConstomerId(String id);
+
+    List<Tran> getTranByContactsId(String id);
 }

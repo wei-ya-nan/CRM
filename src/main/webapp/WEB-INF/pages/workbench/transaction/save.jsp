@@ -131,7 +131,7 @@
                         type: 'post',
                         dataType: 'json',
                         success: function (response) {
-                            console.log(response);
+
                             process(response.data);
                         }
 
@@ -157,6 +157,7 @@
                 var description = $("#create-describe").val();
                 var contactSummary = $("#create-contactSummary").val();
                 var nextContactTime = $("#create-nextContactTime").val();
+                var customerId = '${customerId}';
 
                 // 表单验证
                 if (name == null || name == '' || customerName == '' || expectedDate == '' || stage == '') {
@@ -179,6 +180,7 @@
                         description: description,
                         contactSummary: contactSummary,
                         nextContactTime: nextContactTime,
+                        customerId:customerId
 
                     },
 					type:"post",
@@ -186,7 +188,7 @@
 					success: function (response) {
                     	console.log(response);
                     	if(response.result == "SUCCESS"){
-                    	    // 跳转到脚印的主页面
+                    	    // 跳转到交易的主页面
                     		window.location.href='transaction/index.html';
 						}else{
                     	    layer.msg("系统繁忙请稍后重试O_O");

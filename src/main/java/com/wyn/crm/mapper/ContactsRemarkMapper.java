@@ -60,4 +60,6 @@ public interface ContactsRemarkMapper {
      * @return
      */
     int insertContactsRemarkByList(List<ContactsRemark> list);
+
+    List<ContactsRemark> getContactsRemark(String id);
 }

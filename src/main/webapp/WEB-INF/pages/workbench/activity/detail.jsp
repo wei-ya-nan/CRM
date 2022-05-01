@@ -117,7 +117,6 @@
                         layer.msg(response.message);
                     }
                 });
-
             });
 
             $("#remarkDivList").on("click", "a[name=delete_remark]", function () {

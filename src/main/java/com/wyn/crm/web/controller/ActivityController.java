@@ -96,7 +96,7 @@ public class ActivityController {
                                 @RequestParam(value = "startDate", defaultValue = "") String startDate,
                                 @RequestParam(value = "endDate", defaultValue = "") String endDate) {
 
-        System.out.println(keyword);
+
         PageInfo<Activity> page = activityService.getActivityPage(keyword, pageNum, pageSize, owner, startDate,
                 endDate);
 
